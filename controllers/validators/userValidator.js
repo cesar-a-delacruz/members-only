@@ -3,6 +3,7 @@ const { body } = require("express-validator");
 const errors = {
   alpha: "must contain letters only",
   email: "must be a valid email",
+  fieldMatch: "must match",
 };
 
 module.exports = [
@@ -13,5 +14,9 @@ module.exports = [
   body("email")
     .trim()
     .isEmail()
-    .withMessage("Email " + errors.email)
+    .withMessage("Email " + errors.email),
+  body("confirm_password")
+    .trim()
+    .custom((value, { req }) => value === req.body.password)
+    .withMessage("Passwords " + errors.fieldMatch),
 ];
