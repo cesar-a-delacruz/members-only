@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Members Only: <%= title %></title>
 </head>
 <body>
+    <h1><%= title %></h1>
     <form action="/user/sign-up" method="post" novalidate>
         <label for="full_name">Full Name:</label>
         <input type="text" id="full_name" name="full_name">

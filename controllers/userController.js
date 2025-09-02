@@ -5,7 +5,7 @@ const validator = require("./validators/userValidator");
 
 module.exports = {
   new(req, res) {
-    res.status(200).render("user/sign-up");
+    res.status(200).render("user/sign-up", { title: 'Sign Up'});
   },
   create: [
     validator,
