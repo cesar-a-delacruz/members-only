@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Only: <%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <form action="/user/join" method="post" novalidate>
+        <input type="hidden" name="user_id" value="<%= userId %>">
+        <label for="passcode">Enter the secret passcode:</label>
+        <input type="text" id="passcode" name="passcode">
+        <br>
+        <button type="submit">Join</button>
+        <a href="/">Cancel</a>
+    </form>
+</body>
+</html>

@@ -6,7 +6,7 @@ CREATE TABLE users (
     full_name VARCHAR(100),
     email VARCHAR(100),
     password VARCHAR(60),
-    status BOOLEAN DEFAULT TRUE
+    member BOOLEAN DEFAULT FALSE
 );
 CREATE TABLE messages (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
