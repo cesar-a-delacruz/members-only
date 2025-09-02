@@ -1,5 +1,6 @@
-const model = require("../models/userModel");
 const { validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const model = require("../models/userModel");
 const validator = require("./validators/userValidator");
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
       if (!errors.isEmpty()) res.status(400).json(errors.array());
 
       const user = req.body;
+      user.password = await bcrypt.hash(user.password, 10);
       const result = await model.insert(user);
       res.status(200).json(result);
     },
