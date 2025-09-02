@@ -1,13 +1,20 @@
 const model = require("../models/userModel");
+const { validationResult } = require("express-validator");
+const validator = require("./validators/userValidator");
 
 module.exports = {
   new(req, res) {
     res.status(200).render("user/sign-up");
   },
-  async create(req, res) {
-    const user = req.body;
-    const result = await model.insert(user);
-    if (result) res.status(200).json(result);
-    else res.status(400).json(result);
-  },
+  create: [
+    validator,
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) res.status(400).json(errors.array());
+
+      const user = req.body;
+      const result = await model.insert(user);
+      res.status(200).json(result);
+    },
+  ],
 };
