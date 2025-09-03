@@ -22,18 +22,8 @@ module.exports = {
   async join(req, res) {
     const { user_id, passcode } = req.body;
     if (passcode !== "secret") res.status(400).send("Wrong passcode!");
-    
+
     await model.join(user_id);
     res.status(200).send("You've joined the club!");
   },
-  login(req, res) {
-    res.status(200).render("user/login", { title: "Log In" });
-  },
-  async verify(req, res) {
-    const { email, password } = req.body;
-    const user = await model.findByEmail(email)
-
-    if (!user || await bcrypt.compare(user.password, password)) res.status(400).send("Wrong credentials");
-    res.status(200).send("Welcome " + user.full_name);
-  }
 };
