@@ -18,7 +18,7 @@ passport.serializeUser(auth.serializer);
 passport.deserializeUser(auth.deserializer);
 
 app.get("/", (req, res) => {
-  res.render('home', {title: 'Home Page', user: req.user})
+  res.render("home", { title: "Home Page", user: req.user });
 });
 
 app.use("/user", userRouter);
@@ -33,6 +33,14 @@ app.post(
     failureRedirect: "/",
   }),
 );
+app.get("/logout", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 app.listen(process.env.APP_PORT, (error) => {
   if (error) throw error;
