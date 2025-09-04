@@ -3,6 +3,7 @@ const session = require("express-session");
 const passport = require("passport");
 const dotenv = require("dotenv");
 const userRouter = require("./routes/userRouter");
+const messageRouter = require("./routes/messageRouter");
 const auth = require("./auth");
 
 const app = express();
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
+app.use("/messages", messageRouter);
 
 app.get("/login", (req, res) => {
   res.status(200).render("login", { title: "Log In" });
