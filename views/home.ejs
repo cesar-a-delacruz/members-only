@@ -11,6 +11,8 @@
         <h2>Hi <%= user.full_name %></h2>
         <a href="/logout">Logout</a>
         <a href="/messages/new">Create a new message</a>
+    <% } else { %>
+        <a href="/login">Login</a>
     <% } %>
     <div class="container">
 
