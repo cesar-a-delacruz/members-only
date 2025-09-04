@@ -17,6 +17,10 @@ passport.use(auth.strategy);
 passport.serializeUser(auth.serializer);
 passport.deserializeUser(auth.deserializer);
 
+app.get("/", (req, res) => {
+  res.render('home', {title: 'Home Page', user: req.user})
+});
+
 app.use("/user", userRouter);
 
 app.get("/login", (req, res) => {
@@ -25,8 +29,8 @@ app.get("/login", (req, res) => {
 app.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/yes",
-    failureRedirect: "/no",
+    successRedirect: "/",
+    failureRedirect: "/",
   }),
 );
 

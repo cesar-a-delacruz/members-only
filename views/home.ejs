@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Only: <%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <% if (user) { %>
+        <h2>Hi <%= user.full_name %></h2>
+        <a href="/messages/new">Create a new message</a>
+    <% } %>
+    <div class="container">
+
+    </div>
+</body>
+</html>
