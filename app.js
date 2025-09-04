@@ -19,7 +19,7 @@ passport.serializeUser(auth.serializer);
 passport.deserializeUser(auth.deserializer);
 
 app.get("/", (req, res) => {
-  res.render("home", { title: "Home Page", user: req.user });
+  res.redirect("/messages");
 });
 
 app.use("/user", userRouter);

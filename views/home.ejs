@@ -15,7 +15,14 @@
         <a href="/login">Login</a>
     <% } %>
     <div class="container">
-
+        <% messages.forEach(message => { %>
+         <div class="message">
+            <h3><%= message.title %></h3>
+            <p><b>User: </b><%= message.user %></p>
+            <p><b>Date: </b><%= message.post_date %></p>
+            <p><%= message.content %></p>
+         </div>
+        <% }) %>
     </div>
 </body>
 </html>

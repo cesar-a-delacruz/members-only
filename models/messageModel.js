@@ -11,7 +11,8 @@ module.exports = {
   },
   async findAll() {
     const result = await pool.query(
-      "SELECT * FROM messages ORDER BY post_date DESC",
+      "SELECT messages.*, users.full_name as user FROM messages " +
+        "INNER JOIN users ON users.id = messages.user_id ORDER BY post_date DESC",
     );
     return result.rows;
   },

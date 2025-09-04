@@ -19,4 +19,8 @@ module.exports = {
       res.status(200).redirect("/");
     },
   ],
+  async index(req, res) {
+    const messages = await model.findAll();
+    res.render("home", { title: "Home Page", user: req.user, messages });
+  },
 };
