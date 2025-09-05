@@ -1,0 +1,25 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  align-self: center;
+  width: max-content;
+  margin-top: 10%;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  color: white;
+  min-width: 200px;
+  width: 40vw;
+  background-color: rgb(138, 107, 50);
+}
+
+form button {
+  align-self: center;
+}
