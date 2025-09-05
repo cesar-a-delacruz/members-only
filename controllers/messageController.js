@@ -1,10 +1,10 @@
 const { validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
 const model = require("../models/messageModel");
 const validator = require("./validators/messageValidator");
 
 module.exports = {
   new(req, res) {
+    if (!req.user) return res.redirect("/");
     res.status(200).render("messages/new", { title: "Create New Message" });
   },
   async index(req, res) {
@@ -28,6 +28,7 @@ module.exports = {
     },
   ],
   async delete(req, res) {
+    if (!req.user) return res.redirect("/");
     await model.delete(req.body.message_id);
     res.redirect("/");
   },

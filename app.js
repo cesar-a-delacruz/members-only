@@ -2,6 +2,8 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 const dotenv = require("dotenv");
+const pool = require("./db/pool");
+const pgSession = require("connect-pg-simple")(session);
 const userRouter = require("./routes/userRouter");
 const messageRouter = require("./routes/messageRouter");
 const auth = require("./auth");
@@ -12,7 +14,18 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 dotenv.config();
 
-app.use(session({ secret: "secret", resave: false, saveUninitialized: false }));
+app.use(
+  session({
+    store: new pgSession({
+      pool: pool,
+      tableName: "session",
+      createTableIfMissing: true,
+    }),
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
 app.use(passport.session());
 passport.use(auth.strategy);
 passport.serializeUser(auth.serializer);
@@ -26,6 +39,7 @@ app.use("/users", userRouter);
 app.use("/messages", messageRouter);
 
 app.get("/login", (req, res) => {
+  if (req.user) return res.redirect("/");
   res.status(200).render("login", { title: "Log In" });
 });
 app.post(

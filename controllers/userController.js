@@ -5,6 +5,7 @@ const validator = require("./validators/userValidator");
 
 module.exports = {
   new(req, res) {
+    if (req.user) return res.redirect("/");
     res.status(200).render("user/new", { title: "Sign Up" });
   },
   create: [
