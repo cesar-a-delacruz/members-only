@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   res.redirect("/messages");
 });
 
-app.use("/user", userRouter);
+app.use("/users", userRouter);
 app.use("/messages", messageRouter);
 
 app.get("/login", (req, res) => {
@@ -35,11 +35,10 @@ app.post(
     failureRedirect: "/",
   }),
 );
+
 app.get("/logout", (req, res) => {
   req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
+    if (err) return next(err);
     res.redirect("/");
   });
 });

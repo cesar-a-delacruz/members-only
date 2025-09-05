@@ -7,6 +7,14 @@ module.exports = {
   new(req, res) {
     res.status(200).render("messages/new", { title: "Create New Message" });
   },
+  async index(req, res) {
+    const messages = await model.findAll();
+    res.render("messages/index", {
+      title: "Home Page",
+      user: req.user,
+      messages,
+    });
+  },
   create: [
     validator,
     async (req, res) => {
@@ -16,13 +24,9 @@ module.exports = {
       const message = req.body;
       message.user_id = req.user.id;
       model.insert(message);
-      res.status(200).redirect("/");
+      res.redirect("/");
     },
   ],
-  async index(req, res) {
-    const messages = await model.findAll();
-    res.render("home", { title: "Home Page", user: req.user, messages });
-  },
   async delete(req, res) {
     await model.delete(req.body.message_id);
     res.redirect("/");
