@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Members Only: <%= title %></title>
+    <link rel="stylesheet" href="/all.css">
+    <link rel="stylesheet" href="/login.css">
 </head>
 <body>
     <h1><%= title %></h1>
+    <a href="/users/new">Sign Up</a>
     <form action="/login" method="post" novalidate>
         <label for="username">Email:</label>
         <input type="email" id="username" name="username">
@@ -16,6 +19,5 @@
         <br>
         <button type="submit">Log In</button>
     </form>
-    <a href="/users/new">Sign Up</a>
 </body>
 </html>

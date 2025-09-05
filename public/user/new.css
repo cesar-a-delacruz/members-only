@@ -1,0 +1,28 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  align-self: center;
+  width: max-content;
+  margin-top: 5%;
+}
+
+label {
+  font-weight: bold;
+}
+
+input:not([type="checkbox"]) {
+  color: white;
+  min-width: 200px;
+  background-color: rgb(138, 107, 50);
+}
+
+form button,
+a {
+  align-self: center;
+}
+
+a {
+  width: fit-content;
+}
