@@ -5,11 +5,13 @@ const validator = require("./validators/messageValidator");
 module.exports = {
   new(req, res) {
     if (!req.user) return res.redirect("/");
-    res.status(200).render("messages/new", { title: "Create New Message" });
+    return res
+      .status(200)
+      .render("messages/new", { title: "Create New Message" });
   },
   async index(req, res) {
     const messages = await model.findAll();
-    res.render("messages/index", {
+    return res.render("messages/index", {
       title: "Messages",
       user: req.user,
       messages,
@@ -24,12 +26,12 @@ module.exports = {
       const message = req.body;
       message.user_id = req.user.id;
       model.insert(message);
-      res.redirect("/");
+      return res.redirect("/");
     },
   ],
   async delete(req, res) {
     if (!req.user) return res.redirect("/");
     await model.delete(req.body.message_id);
-    res.redirect("/");
+    return res.redirect("/");
   },
 };

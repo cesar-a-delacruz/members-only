@@ -32,7 +32,7 @@ passport.serializeUser(auth.serializer);
 passport.deserializeUser(auth.deserializer);
 
 app.get("/", (req, res) => {
-  res.redirect("/messages");
+  return res.redirect("/messages");
 });
 
 app.use("/users", userRouter);
@@ -40,7 +40,7 @@ app.use("/messages", messageRouter);
 
 app.get("/login", (req, res) => {
   if (req.user) return res.redirect("/");
-  res.status(200).render("login", { title: "Log In" });
+  return res.status(200).render("login", { title: "Log In" });
 });
 app.post(
   "/login",
@@ -53,7 +53,7 @@ app.post(
 app.get("/logout", (req, res) => {
   req.logout((err) => {
     if (err) return next(err);
-    res.redirect("/");
+    return res.redirect("/");
   });
 });
 
