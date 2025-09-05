@@ -16,4 +16,8 @@ module.exports = {
     );
     return result.rows;
   },
+  async delete(id) {
+    const result = await pool.query("DELETE FROM messages WHERE id = $1", [id]);
+    return result.rowCount;
+  },
 };

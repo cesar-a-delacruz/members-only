@@ -23,4 +23,8 @@ module.exports = {
     const messages = await model.findAll();
     res.render("home", { title: "Home Page", user: req.user, messages });
   },
+  async delete(req, res) {
+    await model.delete(req.body.message_id);
+    res.redirect('/');
+  },
 };

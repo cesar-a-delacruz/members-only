@@ -18,6 +18,12 @@
         <% messages.forEach(message => { %>
          <div class="message">
             <h3><%= message.title %></h3>
+            <% if (user && user.is_admin) { %>
+                <form action="/messages/delete" method="post">
+                    <input type="hidden" name="message_id" value="<%= message.id %>">
+                    <button type="submit">Delete</button>
+                </form>
+            <% } %>
             <p><b>User: </b><%= user && user.member === true ? message.user : 'you must be a member to view' %></p>
             <p><b>Date: </b><%= user && user.member === true ? message.post_date : 'you must be a member to view' %></p>
             <p><%= message.content %></p>
