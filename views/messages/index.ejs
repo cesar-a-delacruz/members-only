@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Members Only: <%= title %></title>
     <link rel="stylesheet" href="/all.css">
+    <link rel="stylesheet" href="/messages/index.css">
 </head>
 <body>
     <h1><%= title %></h1>
     <div class="top">
         <% if (user) { %>
-            <h2>Hi <%= user.full_name %></h2>
+            <h2>Hi <%= user.full_name %>!</h2>
             <a href="/logout">Logout</a>
             <a href="/messages/new">Create a new message</a>
         <% } else { %>

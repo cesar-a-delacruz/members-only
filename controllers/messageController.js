@@ -10,7 +10,7 @@ module.exports = {
   async index(req, res) {
     const messages = await model.findAll();
     res.render("messages/index", {
-      title: "Home Page",
+      title: "Messages",
       user: req.user,
       messages,
     });

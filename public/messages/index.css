@@ -1,0 +1,29 @@
+div.top,
+div.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: max-content;
+}
+div.top {
+  background-color: rgb(155, 101, 0);
+  padding: 10px;
+}
+
+div.top > * {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+div.container {
+  gap: 20px;
+  background: linear-gradient(to right, rgb(255, 197, 89), rgb(90, 59, 0));
+  padding: 20px;
+}
+
+div.message {
+  background-color: rgb(177, 130, 43);
+  padding: 10px;
+}
