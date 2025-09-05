@@ -15,9 +15,16 @@ module.exports = {
 
       const user = req.body;
       user.password = await bcrypt.hash(user.password, 10);
-      if (!user.is_admin) user.is_admin = false;
-      const userId = await model.insert(user);
-      res.status(200).render("user/join", { title: "Join The Club", userId });
+      if (!user.is_admin) {
+        user.is_admin = !user.is_admin && false;
+        user.member = false;
+        const userId = await model.insert(user);
+        res.status(200).render("user/join", { title: "Join The Club", userId });
+      } else {
+        user.member = true;
+        await model.insert(user);
+        res.redirect("/");
+      }
     },
   ],
   async join(req, res) {

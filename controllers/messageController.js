@@ -25,6 +25,6 @@ module.exports = {
   },
   async delete(req, res) {
     await model.delete(req.body.message_id);
-    res.redirect('/');
+    res.redirect("/");
   },
 };

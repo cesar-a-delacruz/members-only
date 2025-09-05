@@ -1,11 +1,11 @@
 const pool = require("../db/pool");
 module.exports = {
   async insert(user) {
-    const { full_name, email, is_admin, password } = user;
+    const { full_name, email, password, member, is_admin } = user;
     const result = await pool.query(
-      "INSERT INTO users (full_name, email, is_admin, password) " +
-        "VALUES ($1, $2, $3, $4) RETURNING id",
-      [full_name, email, is_admin, password],
+      "INSERT INTO users (full_name, email, password, member, is_admin) " +
+        "VALUES ($1, $2, $3, $4, $5) RETURNING id",
+      [full_name, email, password, member, is_admin],
     );
     return result.rows[0].id;
   },
