@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  max-width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, black, rgb(71, 46, 0));
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background-color: rgb(211, 137, 0);
+  color: white;
+}

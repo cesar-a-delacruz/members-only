@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Members Only: <%= title %></title>
+    <link rel="stylesheet" href="/all.css">
 </head>
 <body>
     <h1><%= title %></h1>
-    <% if (user) { %>
-        <h2>Hi <%= user.full_name %></h2>
-        <a href="/logout">Logout</a>
-        <a href="/messages/new">Create a new message</a>
-    <% } else { %>
-        <a href="/login">Login</a>
-    <% } %>
+    <div class="top">
+        <% if (user) { %>
+            <h2>Hi <%= user.full_name %></h2>
+            <a href="/logout">Logout</a>
+            <a href="/messages/new">Create a new message</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+        <% } %>
+    </div>
     <div class="container">
         <% messages.forEach(message => { %>
          <div class="message">
