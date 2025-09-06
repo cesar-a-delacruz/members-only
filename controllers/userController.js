@@ -6,7 +6,7 @@ const validator = require("./validators/userValidator");
 module.exports = {
   new(req, res) {
     if (req.user) return res.redirect("/");
-    return res.status(200).render("user/new", { title: "Sign Up" });
+    return res.status(200).render("users/new", { title: "Sign Up" });
   },
   create: [
     validator,
@@ -22,7 +22,7 @@ module.exports = {
         const userId = await model.insert(user);
         return res
           .status(200)
-          .render("user/join", { title: "Join The Club", userId });
+          .render("users/join", { title: "Join The Club", userId });
       } else {
         user.member = true;
         await model.insert(user);
